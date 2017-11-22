@@ -1,0 +1,19 @@
+.adjuntar_archivo
+{
+	background:#DDD url(../Imagenes/lupa.png) no-repeat 100% 1px;
+	background-size:25px;
+	border-radius:20px;
+	cursor:pointer;
+	border:solid #AAA 1px;
+}
+
+.producto
+{
+	padding:20px;
+	width:26%;
+	height:220px;
+	display:inline-block;
+	margin-left:1%;
+	margin-top:1%;
+	position:relative;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE  html>
+<html>	
+	<head>
+		<style type="text/css">
+ 				body{
+				  font-family: 'Droid Sans', 'Helvetica', Arial, sans-serif;
+				}
+
+				#latlng{
+				  display: block;
+				  margin: 0;
+				  padding: 0;
+				  position: absolute; /* posición absoluta a navegador */
+				  top: 0;             /* ajusta a borde de navegador */
+				  left: 0;
+				  right: 0;
+				  height: 50px;
+				}
+
+				#mapa{
+				  display: block;
+				  margin: 0;
+				  padding: 0;
+				  position: absolute; /* posición absoluta a navegador */
+				  top: 50px;      /* 50px debajo de borde de navegador */
+				  left: 0;        /* ajusta a borde de navegador */
+				  right: 0;
+				  bottom: 0;
+				  background: rgba(0,255,0,0.5); /* verde si no hay mapa */
+				}
+ 			
+		</style>
+		<title>Geolocalizacion mapsjs</title>
+		<script type="text/javascript" src = "zepto.min.js"></script>
+		<script type="text/javascript" src = "http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script type="text/javascript" src = "gmaps.js"></script>
+		<script type="text/javascript">
+			var map,lat,lng;
+			$(document).ready(function()
+
+				{
+					function geoLocalizar()
+					{
+						GMaps.geolocate(
+							{
+								success:function(position)
+								{
+									lat = position.coords.latitude;
+									lng = position.coords.longitude;
+
+									map = new GMaps(
+									{
+										el:"#mapa",
+										lat:lat,
+										lng:lng
+									});
+									map.addMarker({lat:lat,lng:lng});
+								},
+								error:function(error)
+								{
+									alert("error" + error.message);
+								},
+								not_supported:function(){alert("no se soporta");}
+
+							});
+
+					};
+					geoLocalizar();
+				});
+		</script>
+	</head>
+	<body>
+		<div id = "mapa"></div>
+	</body>
+</html>
